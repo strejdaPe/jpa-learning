@@ -15,4 +15,9 @@ public class MessageService {
     public List<Order> getAllOrders() {
         return entityManager.createQuery("select o from Order o", Order.class).getResultList();
     }
+
+    public Order addOrder(Order order) {
+        entityManager.persist(order);
+        return order;
+    }
 }

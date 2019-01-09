@@ -37,4 +37,13 @@ public class OrderResource {
         dao.createOrder(order);
         return order;
     }
+
+    @POST
+    @Path("/ejb")
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    public Order createOrderWithEjb(Order order) {
+        messageService.addOrder(order);
+        return order;
+    }
 }
