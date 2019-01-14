@@ -26,6 +26,7 @@ public class OrderDao {
     public void createOrder(Order order) {
         try {
             tx.begin();
+            em.persist(order.getCustomer());
             em.persist(order);
             tx.commit();
         } catch (NotSupportedException | SystemException | RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
