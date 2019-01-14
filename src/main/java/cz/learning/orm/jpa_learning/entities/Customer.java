@@ -1,17 +1,21 @@
 package cz.learning.orm.jpa_learning.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.jms.JMSSessionMode;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String firstName;
     private String lastName;
     @OneToMany(mappedBy = "customer")
+    @JsonManagedReference
     private List<Order> orders;
 
     public String getFirstName() {

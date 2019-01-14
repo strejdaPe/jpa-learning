@@ -1,5 +1,8 @@
 package cz.learning.orm.jpa_learning.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +14,7 @@ public class Order {
     private String itemName;
     private int price;
     @ManyToOne()
+    @JsonBackReference
     private Customer customer;
 
     public Customer getCustomer() {
